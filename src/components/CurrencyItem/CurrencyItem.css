@@ -1,0 +1,11 @@
+.currencyItem {
+  display: flex;
+  justify-content: space-around;
+  border: 0.5px solid rgb(241, 240, 240);
+}
+
+.currencyItem__name {
+  color: #4b76b9;
+  font-weight: 300;
+  width: 240px;
+}

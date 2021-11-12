@@ -1,0 +1,13 @@
+.currencyList__header {
+  display: flex;
+  background-color: #4b76b9;
+  color: #fff;
+}
+
+.currencyList__header-name {
+  margin-left: 26%;
+}
+
+.currencyList__header-value {
+  margin-left: 46%;
+}
