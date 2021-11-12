@@ -1,24 +1,17 @@
-import { useEffect } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { fetchCurrency } from '../../redux/action';
+import { connect, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import CurrencyItem from '../CurrencyItem/CurrencyItem';
 
 function CurrencyList() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCurrency());
-  }, [dispatch]);
-
   const currency = useSelector((state) => {
     return state.currencyList.currency;
   });
 
   return (
     <section className='currencyList'>
-      <div className='currencyList__header'>
-        <p className='currencyList__header-name'>Валюта</p>
-        <p className='currencyList__header-value'>Курс валют</p>
+      <div className='container'>
+        <h3 className='container__header-name'>Валюта</h3>
+        <h3 className='container__header-value'>Курс валют</h3>
       </div>
       {currency.map((item) => {
         return (
@@ -29,6 +22,10 @@ function CurrencyList() {
           />
         );
       })}
+
+      <Link exact='true' to='/'>
+        <button className='redirect'>На главную</button>
+      </Link>
     </section>
   );
 }
