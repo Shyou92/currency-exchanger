@@ -1,10 +1,15 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getLanguage } from './redux/action';
 import CurrencyList from './components/CurrencyList/CurrencyList';
 
 function App() {
-  let lang = window.navigator.language || navigator.userLanguage;
-  if (lang !== 'en-US') {
-    console.log(lang);
-  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLanguage());
+  }, [dispatch]);
+
   return (
     <div className='App'>
       <CurrencyList />

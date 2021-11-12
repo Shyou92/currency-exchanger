@@ -3,12 +3,12 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import { fetchCurrency } from '../../redux/action';
 import CurrencyItem from '../CurrencyItem/CurrencyItem';
 
-function CurrencyList({ currencies }) {
+function CurrencyList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCurrency());
-  }, []);
+  }, [dispatch]);
 
   const currency = useSelector((state) => {
     return state.currencyList.currency;
@@ -36,8 +36,8 @@ function CurrencyList({ currencies }) {
 const mapStateToProps = (state) => {
   return {
     currencies: state.currencyList.currency,
+    language: state.lang.lang,
   };
 };
-// const mapDispatchToProps =
 
 export default connect(mapStateToProps, null)(CurrencyList);
