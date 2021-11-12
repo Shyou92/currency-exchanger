@@ -109,8 +109,6 @@ function Converter({ currency, language }) {
     setCurrentCurrency(e.target.value);
   };
 
-  const handleCurrencyResultValue = () => {};
-
   return (
     <section className='converter'>
       <div className='container converter__header'>
@@ -133,7 +131,7 @@ function Converter({ currency, language }) {
           ))}
         </select>
 
-        <p className='converter__text' onChange={handleCurrencyResultValue}>
+        <p className='converter__text'>
           {currencyResultValue} {currentResultCurrency}
         </p>
       </div>
