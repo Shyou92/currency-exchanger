@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { fetchCurrency } from './redux/action';
 
-function App() {
+function App({ currencies }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrency());
+  }, []);
+
+  const currency = useSelector((state) => {
+    return state.currencyList.currency;
+  });
+  const arr = [];
+
+  console.log(currency);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {/* <button onClick={() => dispatch(fetchCurrency())}>Click</button> */}
+      <div>{currency.map((item) => console.log(item))}</div>
+      <div>Валюта</div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currencies: state.currencyList.currency,
+  };
+};
+// const mapDispatchToProps =
+
+export default connect(mapStateToProps, null)(App);
